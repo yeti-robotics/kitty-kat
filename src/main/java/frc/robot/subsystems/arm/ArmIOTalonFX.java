@@ -1,8 +1,9 @@
 package frc.robot.subsystems.arm;
 
 import static frc.robot.constants.Constants.RIO_BUS;
+import static frc.robot.subsystems.arm.ArmConfig.*;
+import static frc.robot.subsystems.arm.ArmConfig.primaryTalonFXConfigs;
 
-import com.ctre.phoenix6.configs.*;
 import com.ctre.phoenix6.controls.MotionMagicTorqueCurrentFOC;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -18,6 +19,8 @@ public class ArmIOTalonFX implements ArmIO {
     public ArmIOTalonFX() {
         armKraken = new TalonFX(ArmConfig.armKrakenID, RIO_BUS);
         armCANCoder = new CANcoder(ArmConfig.armCANcoderID, RIO_BUS);
+
+        armKraken.getConfigurator().apply(primaryTalonFXConfigs);
     }
 
     @Override

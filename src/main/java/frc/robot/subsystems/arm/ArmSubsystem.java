@@ -6,7 +6,7 @@ import org.littletonrobotics.junction.Logger;
 
 public class ArmSubsystem extends SubsystemBase {
     private ArmIO io;
-    private ArmIOInputsAutoLogged inputs;
+    private ArmIOInputsAutoLogged inputs = new ArmIOInputsAutoLogged();
 
     public ArmSubsystem(ArmIO io) {
         this.io = io;
