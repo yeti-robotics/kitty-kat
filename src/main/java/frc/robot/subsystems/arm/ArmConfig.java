@@ -1,6 +1,7 @@
 package frc.robot.subsystems.arm;
 
 import com.ctre.phoenix6.configs.*;
+import com.ctre.phoenix6.signals.*;
 import com.ctre.phoenix6.signals.GravityTypeValue;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -11,6 +12,7 @@ public class ArmConfig {
     public static final int armKrakenID = 21;
     public static final int armCANcoderID = 5;
     public static final double gearRatio = 1;
+    public static final double magnetOffset = 0.0;
 
     private static final Slot0Configs SLOT_0_CONFIGS =
             Robot.isReal()
@@ -41,6 +43,15 @@ public class ArmConfig {
                             new MotorOutputConfigs()
                                     .withInverted(InvertedValue.CounterClockwise_Positive)
                                     .withNeutralMode(NeutralModeValue.Brake));
+
+    static final CANcoderConfiguration cancoderConfiguration =
+            new CANcoderConfiguration()
+                    .withMagnetSensor(
+                            new MagnetSensorConfigs()
+                                    .withSensorDirection(
+                                            SensorDirectionValue.CounterClockwise_Positive)
+                                    .withMagnetOffset(magnetOffset)
+                                    .withAbsoluteSensorDiscontinuityPoint(0.625));
 
     //    public static final int ARM_KRAKEN_ID = 21;
     //    public static final int ARM_CANCODER_ID = 5;
