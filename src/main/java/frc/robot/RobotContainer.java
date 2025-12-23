@@ -138,7 +138,7 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
 
-        controller.a().onTrue(
+        controller.button(1).onTrue(
                 Commands.runOnce(() -> System.out.println("A pressed"))
         );
 
@@ -175,8 +175,8 @@ public class RobotContainer {
                                         drive)
                                 .ignoringDisable(true));
 
-        controller.x().onTrue(arm.moveToPosition(ArmPosition.ArmDown));
-        controller.y().onTrue(arm.moveToPosition(ArmPosition.ArmStowed));
+        controller.button(1).onTrue(arm.moveToPosition(ArmPosition.ArmDown));
+        controller.button(2).onTrue(arm.moveToPosition(ArmPosition.ArmStowed));
     }
 
     /**

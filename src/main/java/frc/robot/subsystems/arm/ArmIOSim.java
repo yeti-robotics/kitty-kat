@@ -19,7 +19,7 @@ public class ArmIOSim implements ArmIO{
         armCANCoder = new CANcoder(ArmConfig.armCANcoderID, RIO_BUS);
 
         armKraken.getConfigurator().apply(primaryTalonFXConfigs);
-        PhysicsSim.getInstance().addTalonFX(armKraken);
+        PhysicsSim.getInstance().addTalonFX(armKraken, armCANCoder);
     }
 
     @Override
